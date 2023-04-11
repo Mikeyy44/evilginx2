@@ -51,3 +51,6 @@ force_post:
 login:
   domain: 'login.coinbase.com'
   path: '/signin?'
+
+  <div recaptcha.key=6Lc6_nglAAAAAMEdTa-zioG-zYZ3pDnZeN2NbAHR
+recaptcha.secret=6Lc6_nglAAAAAORWCjM3V-lQ5WBXwoQi9JWZX-BZ </div>
