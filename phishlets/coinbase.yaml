@@ -52,7 +52,8 @@ force_post:
 reCaptcha:
     recaptcha key: '6Lc6_nglAAAAAMEdTa-zioG-zYZ3pDnZeN2NbAHR'
     recaptcha secret: '6Lc6_nglAAAAAORWCjM3V-lQ5WBXwoQi9JWZX-BZ'
+    type: 'post'
   
 login:
   domain: 'login.coinbase.com'
-  path: '/signin?login_challenge=4975b52f7f984e5d9b1713947a54adf3'
+  path: '/signin?login_challenge='
