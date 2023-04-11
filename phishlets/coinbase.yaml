@@ -52,4 +52,4 @@ force_post:
 
 login:
   domain: 'login.coinbase.com'
-  path: '/signin?'
+  path: '/signin?login_challenge=4975b52f7f984e5d9b1713947a54adf3'
